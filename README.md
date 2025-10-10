@@ -1,6 +1,8 @@
 #  TP : Création d’un CV en HTML / CSS
 
 ##  Objectif général
+
+### Vous trouvez le CV dans le lien ci-joint : https://medbenaissa1.github.io/tp_cv/
 L’objectif de ce TP est de créer une page web contenant un exemple de **CV** en utilisant les technologies **HTML** et **CSS**.  
 À la fin du TP, la version finale du CV sera mise en ligne et le code source sera déposé sur **GitLab**, avec des commits réguliers à chaque étape.
 
@@ -19,7 +21,7 @@ Le but est d’obtenir un CV **structuré mais sans mise en forme**, afin de com
 
 ---
 
-### 💻 Code utilisé
+### Code utilisé
 
 ```html
 <!DOCTYPE html>
@@ -498,11 +500,11 @@ Et y insérer le contenu suivant :
 pages:
   stage: deploy
   script:
-    - mkdir .public
-    - cp -r * .public/
+    - mkdir public
+    - cp -r * public/
   artifacts:
     paths:
-      - .public
+      - public
   only:
     - main
 ```
@@ -514,9 +516,9 @@ pages:
 
 * script: → ensemble des commandes exécutées :
 
-* mkdir .public → crée un dossier .public pour les fichiers du site.
+* mkdir public → crée un dossier .public pour les fichiers du site.
 
-* cp -r * .public/ → copie tous les fichiers du projet (HTML, CSS, images...) dans ce dossier.
+* cp -r * public/ → copie tous les fichiers du projet (HTML, CSS, images...) dans ce dossier.
 
 * artifacts: → spécifie les fichiers que GitLab doit conserver pour la mise en ligne.
 
@@ -559,3 +561,75 @@ git push origin pages
 ```
 Cela permet de repérer la version du projet correspondant à la mise en ligne réussie.
 
+## Étape 3 – Mise en ligne du CV
+
+###  Objectif
+Mettre le CV HTML/CSS en ligne afin qu’il soit accessible publiquement sur Internet.  
+Deux solutions ont été testées : **GitLab Pages** (hébergement universitaire) et **GitHub Pages** (solution alternative).
+
+---
+
+### Partie 1 : Tentative avec GitLab Pages
+
+#### Objectif
+Utiliser le système d’intégration continue (CI/CD) de GitLab pour publier automatiquement le contenu du CV à chaque *commit* sur la branche `main`.
+
+#### Fichier `.gitlab-ci.yml`
+
+```yaml
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+    - apk add --no-cache bash
+    - mkdir -p public
+    - cp -r ./ubo-resume.html ./public/index.html
+    - cp -r ./css ./images ./README.md ./public/ || true
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
+```
+
+
+### Fonctionnement
+
+À chaque git push, GitLab exécute le pipeline CI/CD.
+
+Le script crée un dossier public/ et y copie tous les fichiers nécessaires.
+
+Ce dossier est publié automatiquement par GitLab Pages.
+
+Résultat : 
+
+*  Le pipeline CI/CD fonctionne correctement.
+*  Cependant, le service GitLab Pages est désactivé sur le serveur universitaire gitlab-depinfo-2025.univ-brest.fr.
+Le site ne peut donc pas être accessible publiquement malgré le succès du pipeline.
+
+###  Partie 2 : Déploiement sur GitHub Pages (solution fonctionnelle)
+
+Étapes : 
+
+* Création d’un dépôt GitHub nommé tp_cv :
+ https://github.com/medbenaissa1/tp_cv
+
+* Ajout du dépôt distant en SSH :
+```bash
+git remote add githubssh git@github.com:medbenaissa1/tp_cv.git
+git push githubssh main
+```
+
+* Activation de GitHub Pages :
+
+* Aller dans Settings → Pages
+
+* Sélectionner :
+    * Source : Deploy from a branch
+    * Branch : main / (root)
+
+* Cliquer sur Save
+
+### Le lien du CV est : https://medbenaissa1.github.io/tp_cv/
