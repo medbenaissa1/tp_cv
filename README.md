@@ -642,13 +642,6 @@ git push githubssh main
 
 On crée un fichier séparé dédié à la gestion du comportement de la page selon la taille de l’écran.
 
- Emplacement
-TP_CV/
- ├── css/
- │   ├── resume.css
- │   └── responsive.css   ← fichier à créer ici
-
-
 
 
 *  But :
@@ -674,3 +667,98 @@ Chaque changement de couleur montre qu’une règle @media différente s’appli
 * Cela confirme que les media queries fonctionnent.
 
 On tester en ouvrant les Outils de développement (F12) → mode mobile.
+
+
+
+## Question 3 — Adapter la page à une seule colonne sur petits écrans
+
+Pour les tailles d’écran inférieures à 740px, la mise en page est simplifiée :
+
+* Suppression des flottements (float: none) pour que les éléments se réorganisent verticalement.
+
+* Le contenu s’affiche sur une seule colonne (width: 100%).
+
+* L’image du profil se centre automatiquement, et les informations personnelles s’alignent sous le titre.
+
+ Code ajouté :
+ ```css
+@media only screen and (max-width: 740px) {
+  #wrapper {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  header {
+    display: block;
+    text-align: center;
+  }
+
+  header img {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #infos ul {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+ Résultat attendu :
+
+En réduisant la largeur de la fenêtre :
+
+* Les sections s’empilent verticalement,
+
+* Le CV devient lisible sans défilement horizontal,
+
+* L’affichage est harmonieux sur tablette et mobile.
+
+## Question 4  — Centarge
+```css
+@media only screen and (max-width: 740px) {
+  section h2 {
+    text-align: center;
+  }
+  ```
+
+
+## Question 5 — Validation et création du tag responsive
+
+Une fois les ajustements terminés, les fichiers sont validés et versionnés dans Git.
+
+ Commandes utilisées :
+   ```bash
+git add .
+git commit -m "Partie 4 : adaptation responsive du CV"
+git tag responsive
+  ```
+
+
+*  Ce tag responsive permet d’identifier la version finale du CV avec design adaptatif.
+
+## Question 6 — Mise en ligne du CV sur GitHub Pages
+
+Le déploiement du site a été fait sur GitHub Pages, car GitLab Pages ne fonctionnait pas correctement sur le serveur universitaire.
+
+ Commandes utilisées :
+   ```bash
+git push githubssh main --tags
+  ```
+
+ Lien de mise en ligne :
+ https://medbenaissa1.github.io/tp_cv/
+
+
+Explication :
+  ```txtx
+À chaque push sur la branche main, GitHub Pages :
+
+Met à jour automatiquement les fichiers HTML et CSS,
+
+Génère la version en ligne du CV,
+
+Rend accessible la page publique sur le lien ci-dessus.
+  ```

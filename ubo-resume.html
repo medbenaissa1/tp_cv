@@ -16,22 +16,48 @@
 
 </head>
 <body>
-  <div id="wrapper">
+  <div id="wrapper"
+     itemscope
+     itemtype="https://schema.org/Person"
+     itemid="https://medbenaissa1.github.io/tp_cv/"
+     itemref="social-links">
 
     <header>
-      <h1>Ahmed AL KHALIDI</h1>
-      <h2>Développeur Web Senior</h2>
-      <img src="images/photo_cv.jpeg" alt="Photo de profil fictive">
+      <h1 itemprop="name">Ahmed AL KHALIDI</h1>
+      <h2 itemprop="jobTitle">Développeur Web Senior</h2>
+      <img src="images/photo_cv.jpeg" alt="Photo de profil" itemprop="image">
+
       <section id="infos">
         <h3>Informations personnelles</h3>
-        <ul>
-          <li><strong>Nom :</strong> Al Khalidi</li>
-          <li><strong>Prénom :</strong> Ahmed</li>
-          <li><strong>Adresse :</strong> 123 Rue des Jasmins, Rabat, Maroc</li>
-          <li><strong>Date de naissance :</strong> 12 mars 1945 (80 ans)</li>
-          <li><strong>Email :</strong> <a href="mailto:ahmed.khalidi@example.com">ahmed.khalidi@example.com</a></li>
-          <li><strong>Nationalité :</strong> Marocaine</li>
-        </ul>
+            <ul>
+              <li><strong>Nom :</strong> <span itemprop="familyName">Al Khalidi</span></li>
+              <li><strong>Prénom :</strong> <span itemprop="givenName">Ahmed</span></li>
+
+              <li><strong>Adresse :</strong>
+                <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                  <span itemprop="streetAddress">123 Rue des Jasmins</span>,
+                  <span itemprop="addressLocality">Rabat</span>,
+                  <span itemprop="addressCountry">Maroc</span>
+                </span>
+              </li>
+
+              <li><strong>Date de naissance :</strong>
+                <time itemprop="birthDate" datetime="1945-03-12">12 mars 1945</time> (80 ans)
+              </li>
+
+              <li><strong>Email :</strong>
+                <a href="mailto:ahmed.khalidi@example.com" itemprop="email">
+                  ahmed.khalidi@example.com
+                </a>
+              </li>
+
+              <li><strong>Nationalité :</strong>
+                <span itemprop="nationality" itemscope itemtype="https://schema.org/Country">
+                  <span itemprop="name">Maroc</span>
+                </span>
+              </li>
+            </ul>
+
       </section>
     </header>
    <section id="presentation">
@@ -46,8 +72,10 @@
 
       <article>
         <h3>Lead Developer – WebTech Solutions (2018–2024)</h3>
-        <p>Encadrement d’une équipe de 6 développeurs pour la refonte du site e-commerce de l’entreprise. 
-        Mise en place d’une architecture moderne basée sur React et Node.js.</p>
+        <p itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
+          <span itemprop="name">WebTech Solutions</span>
+        </p>
+        <p>Encadrement d’une équipe…</p>
       </article>
 
       <article>
@@ -65,36 +93,44 @@
 
     <section id="competences">
       <h2>Compétences</h2>
-      <dl>
-        <dt>Langages</dt>
-        <dd>HTML5, CSS3, JavaScript, PHP, Python</dd>
+          <dl>
+            <dt>Langages</dt>
+            <dd><span itemprop="knowsAbout">HTML5</span>, <span itemprop="knowsAbout">CSS3</span>,
+                <span itemprop="knowsAbout">JavaScript</span>, <span itemprop="knowsAbout">PHP</span>, <span itemprop="knowsAbout">Python</span></dd>
 
-        <dt>Frameworks</dt>
-        <dd>React, Bootstrap, Django</dd>
+            <dt>Frameworks</dt>
+            <dd><span itemprop="knowsAbout">React</span>, <span itemprop="knowsAbout">Bootstrap</span>, <span itemprop="knowsAbout">Django</span></dd>
 
-        <dt>Outils</dt>
-        <dd>Git, VS Code, Linux</dd>
+            <dt>Outils</dt>
+            <dd><span itemprop="knowsAbout">Git</span>, <span itemprop="knowsAbout">VS Code</span>, <span itemprop="knowsAbout">Linux</span></dd>
 
-        <dt>Bases de données</dt>
-        <dd>MySQL, PostgreSQL</dd>
-      </dl>
+            <dt>Bases de données</dt>
+            <dd><span itemprop="knowsAbout">MySQL</span>, <span itemprop="knowsAbout">PostgreSQL</span></dd>
+          </dl>
+
     </section>
 
     <section id="formation">
       <h2>Formation</h2>
       <ul>
-        <li>Master en Informatique – Université de Rabat (2005–2007)</li>
+        <li>
+          Master en Informatique – Université de Rabat (2005–2007)
+          <span itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
+            <meta itemprop="name" content="Université de Rabat">
+          </span>
+        </li>
         <li>Licence en Développement Web – ENSA Agadir (2002–2005)</li>
       </ul>
     </section>
 
     <section id="langues">
       <h2>Langues</h2>
-      <ul>
-        <li>Arabe : Langue maternelle</li>
-        <li>Français : C1</li>
-        <li>Anglais : Avancé</li>
-      </ul>
+          <ul>
+            <li><span itemprop="knowsLanguage">Arabe</span> : Langue maternelle</li>
+            <li><span itemprop="knowsLanguage">Français</span> : C1</li>
+            <li><span itemprop="knowsLanguage">Anglais</span> : Avancé</li>
+          </ul>
+
     </section>
 
     <section id="hobbies">
@@ -105,17 +141,21 @@
         <li>Randonnées et voyages culturels</li>
       </ul>
     </section>
- <footer>
+
+
+    
+<footer id="social-links">
   <h2>Liens et contacts</h2>
   <ul>
-    <li><a href="https://www.linkedin.com/in/ahmed-alkhalidi" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
-    <li><a href="https://github.com/ahmed-alkhalidi" target="_blank"><i class="fa fa-github"></i> GitHub</a></li>
-    <li><a href="https://twitter.com/ahmed-alkhalidi" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>
-    <li><a href="https://www.flickr.com/photos/ahmed-alkhalidi" target="_blank"><i class="fa fa-flickr"></i> Flickr</a></li>
+    <li><a itemprop="sameAs" href="https://www.linkedin.com/in/ahmed-alkhalidi" target="_blank">LinkedIn</a></li>
+    <li><a itemprop="sameAs" href="https://github.com/ahmed-alkhalidi" target="_blank">GitHub</a></li>
+    <li><a itemprop="sameAs" href="https://twitter.com/ahmed-alkhalidi" target="_blank">Twitter</a></li>
+    <li><a itemprop="sameAs" href="https://www.flickr.com/photos/ahmed-alkhalidi" target="_blank">Flickr</a></li>
   </ul>
 
   <p>© 2025 Ahmed AL KHALIDI — CV personnel réalisé en HTML / CSS.</p>
 </footer>
+
 
   </div>
 </body>
