@@ -814,7 +814,7 @@ Le validateur détecte correctement toutes les propriétés du type Person :
 * name, jobTitle, email, address, birthDate, nationality, ainsi que les sous-propriétés comme knowsLanguage, knowsAbout, etc.
 
 
-💡 Remarque sur la détection automatique
+ Remarque sur la détection automatique
 Je pourrais rendre mon fichier CV principal en le renommant simplement :
 
 ```bash
@@ -838,3 +838,50 @@ et fonctionne parfaitement.
 
 * Si besoin, le renommage en index.html reste une option simple pour automatiser la détection future.
 
+
+
+
+##  Liens importants
+
+*  GitHub (dépôt principal)	https://github.com/medbenaissa1/tp_cv
+	Contient tout le projet CV, code source et fichiers CSS.
+* CV en ligne (GitHub Pages)	https://medbenaissa1.github.io/tp_cv/ubo-resume.html
+	Version en ligne du CV avec micro-données.
+*  Validateur Schema.org	https://validator.schema.org/
+	Validation des micro-données du fichier ubo-resume.html.
+* GitLab (Université de Brest)	https://gitlab-depinfo-2025.univ-brest.fr/e22507739/tp_cv
+	Miroir du dépôt GitHub pour le suivi de l’évaluation.
+
+
+
+## Auteur & Droits
+
+**Projet :** *Developpement d'un CV Statique avec HTML et CSS*  
+**Auteur :** Mohammed BENAISSA  
+**Encadrant :** M.Yannick LEMARECHAL - DOSI
+
+
+---
+
+### Licence et copyright
+
+© 2025 Mohammed Benaissa – Tous droits réservés.  
+Ce projet est réalisé dans un but **pédagogique** dans le cadre du TP *"Developpement d'un CV Statique avec HTML et CSS"*.
+
+Toute réutilisation à des fins éducatives est autorisée avec mention de l’auteur.  
+Pour toute utilisation commerciale, veuillez contacter l’auteur.
+
+---
+
+###  Signature
+
+```
+Mohammed Benaissa  
+Étudiant en Master Informatique – UBO  
+mbenaissa@localhost
+```
+
+---
+
+> *“Data Oil”*
+> — M. Benaissa, 2025
