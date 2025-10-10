@@ -753,7 +753,7 @@ git push githubssh main --tags
 
 
 Explication :
-  ```txtx
+  ```txt
 À chaque push sur la branche main, GitHub Pages :
 
 Met à jour automatiquement les fichiers HTML et CSS,
@@ -762,3 +762,50 @@ Génère la version en ligne du CV,
 
 Rend accessible la page publique sur le lien ci-dessus.
   ```
+
+
+
+  ---
+
+##  Conclusion du projet
+
+Ce TP a permis de mettre en œuvre l’ensemble des compétences HTML et CSS vues en cours, en suivant une démarche structurée et progressive :
+
+- **Partie 1 :** création d’un CV complet et sémantique en HTML5.  
+- **Partie 2 :** mise en forme avancée grâce au CSS (layout, typographie, couleurs, et icônes).  
+- **Partie 3 :** mise en ligne via GitHub Pages après expérimentation du déploiement GitLab.  
+- **Partie 4 :** adaptation responsive du CV pour écrans mobiles et tablettes.  
+- **Partie 5 :** enrichissement sémantique avec les **micro-données Schema.org** (type `Person`) validées avec succès sur [validator.schema.org](https://validator.schema.org/).
+
+ Le site est accessible en ligne à l’adresse suivante :  
+ [https://medbenaissa1.github.io/tp_cv/](https://medbenaissa1.github.io/tp_cv/)
+
+Et le dépôt GitLab original est disponible ici :  
+ [https://gitlab-depinfo.univ-brest.fr/e22507739/tp_cv](https://gitlab-depinfo.univ-brest.fr/e22507739/tp_cv)
+
+L’outil de validation Schema.org confirme la bonne reconnaissance des propriétés sémantiques du type `Person`.  
+Le CV est donc complet, conforme aux consignes et **entièrement fonctionnel sur GitHub Pages**.
+
+---
+
+## © Informations et droits
+
+- **Auteur :** Mohammed Benaissa  
+- **Université de Bretagne Occidentale – Département Informatique**  
+- **Année universitaire :** 2025  
+- **Encadrant :** M.LEMARECHAL Yannick
+
+ Ce projet est réalisé dans le cadre du module *Développement Web – HTML/CSS*.  
+L’ensemble des fichiers (HTML, CSS, images et configuration) est soumis sous licence académique UBO.  
+Toute réutilisation pédagogique est libre tant que la paternité du travail est mentionnée.
+
+---
+
+###  Signature de l’étudiant
+
+> Projet rendu par **Mohammed Benaissa**  
+> Étudiant en **M2 DOSI – UBO Brest**  
+> GitHub : [@medbenaissa1](https://github.com/medbenaissa1)  
+> GitLab : [@e22507739](https://gitlab-depinfo.univ-brest.fr/e22507739)
+
+---
