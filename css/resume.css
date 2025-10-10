@@ -1,43 +1,112 @@
-html,
-button,
-input,
-select,
-textarea {
-  color: #444;
+/* --- Base --- */
+:root{
+  --bg:#777;
+  --paper:#fff;
+  --ink:#222;
+  --muted:#555;
+  --accent:#0e7490; /* bleu/teal discret */
 }
 
-html {
-  font-size: 1em;
-  line-height: 1.4;
-  background-color: #777; /* fond de page sombre */
-}
+html,button,input,select,textarea{ color:#444; }
+html{ font-size:16px; line-height:1.6; background:var(--bg); }
+body{ margin:0; font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; color:var(--ink); }
 
 /* Conteneur principal */
-#wrapper {
-  max-width: 900px;
-  min-width: 320px;
-  margin: 0 auto; /* centre horizontalement */
-  background-color: #fff; /* pour contraster avec le fond sombre */
-  padding: 20px;
+#wrapper{
+  max-width:900px;
+  min-width:320px;
+  margin:24px auto;
+  background:var(--paper);
+  border-radius:10px;
+  padding:28px;
+  box-shadow:0 8px 24px rgba(0,0,0,.15);
 }
 
+/* --- Header propre (grille) --- */
 header {
-  position: relative;
-  padding: 20px;
-  background-color: #f9f9f9;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 20px 30px;
+  border-radius: 8px;
+  gap: 10px;
 }
 
+/* bloc texte à gauche */
+header .intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* photo et infos à droite */
+header .photo-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* photo */
 header img {
-  float: right;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 150px;
+  width: 300px;
   height: auto;
-  margin-left: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
 }
 
-h1 {
+
+/* titres */
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
   font-family: "source-sans-pro", sans-serif;
+  color: #222;
 }
+
+header h2 {
+  margin: 6px 0 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+
+/* Infos perso */
+#infos h3{ font-size:1rem; margin:8px 0; color:var(--muted); }
+#infos ul{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:4px 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+}
+#infos li{ margin:0; }
+
+/* --- Sections --- */
+section{ margin:28px 0; }
+section h2{
+  font-size:1.25rem; margin:0 0 8px;
+  border-bottom:1px solid #eee; padding-bottom:4px;
+}
+
+/* Compétences en liste de définition */
+#competences dl{
+  display:grid; grid-template-columns:160px 1fr; gap:8px 16px; margin:0;
+}
+#competences dt{ font-weight:600; color:var(--muted); }
+#competences dd{ margin:0; }
+
+/* --- Liens --- */
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* --- Footer --- */
+footer{
+  margin-top:32px; padding-top:16px;
+  border-top:1px solid #eee; color:#666;
+}
+footer ul{ list-style:none; padding:0; margin:0 0 8px; display:flex; gap:12px; flex-wrap:wrap; }
+footer i{ margin-right:6px; }
+
