@@ -1,0 +1,31 @@
+/* Adaptation responsive finale */
+
+@media only screen and (max-width: 740px) {
+  #wrapper {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  header {
+    display: block;
+    text-align: center;
+  }
+
+  header img {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #infos ul {
+    grid-template-columns: 1fr; /* une seule colonne */
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  section h2 {
+    text-align: center;
+  }
+}
+

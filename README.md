@@ -633,3 +633,44 @@ git push githubssh main
 * Cliquer sur Save
 
 ### Le lien du CV est : https://medbenaissa1.github.io/tp_cv/
+
+
+
+## Étape 4 – Responsive 
+
+### 1. Création du fichier css/responsive.css
+
+On crée un fichier séparé dédié à la gestion du comportement de la page selon la taille de l’écran.
+
+ Emplacement
+TP_CV/
+ ├── css/
+ │   ├── resume.css
+ │   └── responsive.css   ← fichier à créer ici
+
+
+
+
+*  But :
+Vérifier visuellement que la page réagit quand on réduit la largeur de la fenêtre.
+Chaque changement de couleur montre qu’une règle @media différente s’applique.
+
+### 2. Ajouter le fichier à la page HTML et observer le comportement
+ Ligne à ajouter dans le <head> :
+ ```html
+<link rel="stylesheet" href="css/responsive.css">
+```
+
+#### Explication :
+
+* Cette ligne charge les styles responsive en complément de resume.css.
+
+* Lorsque tu redimensionnes la fenêtre :
+
+* Au-dessus de 740px → fond normal (resume.css).
+
+* En dessous de 740px → couleur change selon la largeur.
+
+* Cela confirme que les media queries fonctionnent.
+
+On tester en ouvrant les Outils de développement (F12) → mode mobile.
