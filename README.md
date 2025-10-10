@@ -143,3 +143,29 @@ git add ubo-resume.html
 git commit -m "Étape 2 : ajout du bloc header avec photo et informations personnelles"
 git push
 ```
+## Étape 3 – Ajout du contenu principal du CV
+
+### Objectif
+Structurer le contenu du CV en ajoutant toutes les sections essentielles pour un profil professionnel complet.  
+L’objectif est d’obtenir une page claire et bien organisée avant d’y appliquer le style CSS.
+
+### Contenu ajouté
+Plusieurs nouvelles sections ont été créées à la suite du header :
+
+- **Présentation** : un court texte qui décrit le parcours, la motivation et le profil du développeur.  
+- **Expériences professionnelles** : une série d’articles listant les postes occupés, les entreprises et les missions réalisées.  
+- **Compétences** : une liste détaillée des langages, frameworks, outils et bases de données maîtrisés, structurée avec des balises adaptées.  
+- **Formation** : les diplômes et établissements suivis, avec leurs années.  
+- **Langues** : les langues parlées avec leur niveau de maîtrise.  
+- **Centres d’intérêt** : des activités ou passions personnelles qui complètent le profil.
+
+### Explication
+Cette étape a permis de donner une véritable structure au CV.  
+Chaque section est indépendante et clairement identifiée, ce qui facilitera la mise en forme CSS par la suite.  
+L’utilisation d’éléments comme `<section>`, `<article>`, `<dl>` ou `<ul>` rend le document plus lisible et sémantiquement correct.
+
+### Commit GitLab
+```bash
+git add ubo-resume.html
+git commit -m "Étape 3 : ajout du contenu principal du CV (présentation, expériences, compétences, formation, langues, hobbies)"
+git push
