@@ -1,0 +1,19 @@
+{
+  "langages": [
+    { "nom": "HTML5", "niveau": 5 },
+    { "nom": "CSS3", "niveau": 5 },
+    { "nom": "JavaScript", "niveau": 1 }, 
+    { "nom": "PHP", "niveau": 3 },
+    { "nom": "Python", "niveau": 4 }
+  ],
+  "frameworks": [
+    { "nom": "React", "niveau": 4 },
+    { "nom": "Bootstrap", "niveau": 5 },
+    { "nom": "Django", "niveau": 3 }
+  ],
+  "outils": [
+    { "nom": "Git", "niveau": 5 },
+    { "nom": "VS Code", "niveau": 4 },
+    { "nom": "Linux", "niveau": 4 }
+  ]
+}
