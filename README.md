@@ -763,9 +763,6 @@ Génère la version en ligne du CV,
 Rend accessible la page publique sur le lien ci-dessus.
   ```
 
-
-<<<<<<< HEAD
-
   ---
 
 ##  Conclusion du projet
@@ -811,6 +808,8 @@ Toute réutilisation pédagogique est libre tant que la paternité du travail es
 
 ---
 =======
+=======
+>>>>>>> 971c1b988887644c93dbc7dffc2d4ce2e4360d0b
 ## Partie 5 – Micro-données (Schema.org)
 
 ###  Objectif
@@ -932,4 +931,4 @@ mbenaissa@localhost
 
 > *“Data Oil”*
 > — M. Benaissa, 2025
->>>>>>> 971c1b988887644c93dbc7dffc2d4ce2e4360d0b
+
