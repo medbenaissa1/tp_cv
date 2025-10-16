@@ -112,11 +112,39 @@ footer i{ margin-right:6px; }
 
 
 
-
-/* Les détails sont repliés par défaut, mais pas "display:none" permanent */
-.details{
+/* --- Animation progressive des détails --- */
+.details {
   overflow: hidden;
-  height: 0;           /* point de départ pour l’anim */
-  display: none;       /* caché visuellement jusqu’à ouverture */
+  height: 0;
+  transition: height 0.3s ease;
 }
 
+/* --- Style des boutons "Détails" --- */
+.toggle {
+  margin-top: 6px;
+  background: #e9f4f7;
+  border: 1px solid #bfe4ee;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: #d7eef5;
+}
+
+/* --- Tooltip (info-bulle) --- */
+.tooltip {
+  position: absolute;
+  background-color: #222;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+}
