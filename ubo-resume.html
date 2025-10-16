@@ -70,24 +70,33 @@
     <section id="experiences">
       <h2>Expériences professionnelles</h2>
 
-      <article>
+      <article class="xp">
         <h3>Lead Developer – WebTech Solutions (2018–2024)</h3>
-        <p itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
-          <span itemprop="name">WebTech Solutions</span>
-        </p>
-        <p>Encadrement d’une équipe…</p>
+
+        <button class="toggle" aria-expanded="false">Détails</button>
+
+        <div class="details" hidden>
+          <p>Encadrement d’une équipe de développeurs, conception d’architectures modernes et intégration continue.</p>
+        </div>
       </article>
 
-      <article>
+      <article class="xp">
         <h3>Développeur Front-End – DigitalWave (2014–2018)</h3>
-        <p>Développement d’interfaces responsives et intégration de maquettes UX. 
-        Collaboration avec les équipes design et marketing sur plusieurs projets clients.</p>
+        <button class="toggle" aria-expanded="false">Détails</button>
+        <div class="details" hidden>
+          <p>Développement d’interfaces responsives et intégration de maquettes UX. 
+          Collaboration avec les équipes design et marketing sur plusieurs projets clients.</p>
+        </div>
       </article>
 
-      <article>
+      <article class="xp">
         <h3>Consultant Web Freelance (2008–2014)</h3>
-        <p>Création de sites vitrines et blogs personnalisés pour PME et indépendants. 
-        Accompagnement technique et maintenance continue.</p>
+        <button class="toggle" aria-expanded="false">Détails</button>
+        <div class="details" hidden>
+          <p>Création de sites vitrines et blogs personnalisés pour PME et indépendants. 
+                  Accompagnement technique et maintenance continue.</p>
+        </div>
+        
       </article>
     </section>
 
@@ -158,6 +167,8 @@
 
 
   </div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
 
