@@ -70,44 +70,75 @@
     <section id="experiences">
       <h2>Expériences professionnelles</h2>
 
-      <article>
+      <article class="xp">
         <h3>Lead Developer – WebTech Solutions (2018–2024)</h3>
-        <p itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
-          <span itemprop="name">WebTech Solutions</span>
-        </p>
-        <p>Encadrement d’une équipe…</p>
+
+        <button class="toggle" aria-expanded="false">Détails</button>
+
+        <div class="details" hidden>
+          <p>Encadrement d’une équipe de développeurs, conception d’architectures modernes et intégration continue.</p>
+        </div>
       </article>
 
-      <article>
+      <article class="xp">
         <h3>Développeur Front-End – DigitalWave (2014–2018)</h3>
-        <p>Développement d’interfaces responsives et intégration de maquettes UX. 
-        Collaboration avec les équipes design et marketing sur plusieurs projets clients.</p>
+        <button class="toggle" aria-expanded="false">Détails</button>
+        <div class="details" hidden>
+          <p>Développement d’interfaces responsives et intégration de maquettes UX. 
+          Collaboration avec les équipes design et marketing sur plusieurs projets clients.</p>
+        </div>
       </article>
 
-      <article>
+      <article class="xp">
         <h3>Consultant Web Freelance (2008–2014)</h3>
-        <p>Création de sites vitrines et blogs personnalisés pour PME et indépendants. 
-        Accompagnement technique et maintenance continue.</p>
+        <button class="toggle" aria-expanded="false">Détails</button>
+        <div class="details" hidden>
+          <p>Création de sites vitrines et blogs personnalisés pour PME et indépendants. 
+                  Accompagnement technique et maintenance continue.</p>
+        </div>
+        
       </article>
     </section>
 
     <section id="competences">
       <h2>Compétences</h2>
-          <dl>
-            <dt>Langages</dt>
-            <dd><span itemprop="knowsAbout">HTML5</span>, <span itemprop="knowsAbout">CSS3</span>,
-                <span itemprop="knowsAbout">JavaScript</span>, <span itemprop="knowsAbout">PHP</span>, <span itemprop="knowsAbout">Python</span></dd>
+      <dl>
+        <dt>Langages</dt>
+        <dd>
+          <span class="skill" data-description="Langage de structure des pages web.">HTML5</span>,
+          <span class="skill" data-description="Langage de style pour la mise en forme.">CSS3</span>,
+          <span class="skill" data-description="Langage de programmation du web dynamique.">JavaScript</span>,
+          <span class="skill" data-description="Langage serveur utilisé pour les sites dynamiques.">PHP</span>,
+          <span class="skill" data-description="Langage polyvalent pour le développement backend et IA.">Python</span>
+        </dd>
 
-            <dt>Frameworks</dt>
-            <dd><span itemprop="knowsAbout">React</span>, <span itemprop="knowsAbout">Bootstrap</span>, <span itemprop="knowsAbout">Django</span></dd>
+        <dt>Frameworks</dt>
+        <dd>
+          <span class="skill" data-description="Bibliothèque JS pour interfaces réactives.">React</span>,
+          <span class="skill" data-description="Framework CSS pour design rapide.">Bootstrap</span>,
+          <span class="skill" data-description="Framework Python pour applications web.">Django</span>
+        </dd>
 
-            <dt>Outils</dt>
-            <dd><span itemprop="knowsAbout">Git</span>, <span itemprop="knowsAbout">VS Code</span>, <span itemprop="knowsAbout">Linux</span></dd>
+        <dt>Outils</dt>
+        <dd>
+          <span class="skill" data-description="Système de versionnement de code.">Git</span>,
+          <span class="skill" data-description="Éditeur de code moderne et extensible.">VS Code</span>,
+          <span class="skill" data-description="Système d’exploitation open source pour le développement.">Linux</span>
+        </dd>
 
-            <dt>Bases de données</dt>
-            <dd><span itemprop="knowsAbout">MySQL</span>, <span itemprop="knowsAbout">PostgreSQL</span></dd>
-          </dl>
+        <dt>Bases de données</dt>
+        <dd>
+          <span class="skill" data-description="Système de gestion de bases relationnelles.">MySQL</span>,
+          <span class="skill" data-description="Base de données orientée objet et open source.">PostgreSQL</span>
+        </dd>
+      </dl>
+    </section>
+    <section id="auto-evaluation">
+  <h2>Auto-évaluation des connaissances</h2>
+  <div id="liste-competences"></div>
 
+  <!-- Zone pour le graphique -->
+  <canvas id="graphiqueCompetences" width="600" height="300"></canvas>
     </section>
 
     <section id="formation">
@@ -159,6 +190,8 @@
 
   </div>
 
+<script src="js/app.js"></script>
+<script src="js/auto-eval.js"></script>
 </body>
 </html>
 

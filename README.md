@@ -987,6 +987,277 @@ bloc.style.height = h + 'px';
 
 * Une seule section peut être ouverte à la fois (fermerTous()).
 
+##  Partie JavaScript – Apparition des descriptions détaillées
+
+### Objectif
+Afficher une **description détaillée** (tooltip) lorsqu’on passe la souris sur une compétence technique.  
+Cette description apparaît sous forme d’une **zone flottante** située sous le nom de la compétence.
+
+---
+
+###  Fonctionnement
+Chaque compétence du CV possède un attribut `data-description` contenant une courte explication.  
+Lors du survol, un script JavaScript crée dynamiquement une infobulle qui s’affiche près du curseur.
+
+**Exemple HTML :**
+```html
+<span class="skill" data-description="Langage de structure des pages web.">HTML5</span>
+<span class="skill" data-description="Langage de style pour la mise en forme.">CSS3</span>
+<span class="skill" data-description="Langage de programmation du web dynamique.">JavaScript</span>
+```
+
+### Code JavaScript associé : 
+
+Le script détecte le survol de chaque élément .skill, affiche la description et la fait suivre le mouvement de la souris :
+
+### Observations:
+
+* Le tooltip suit le curseur et disparaît au retrait de la souris.
+
+
+* Observation du tooltip sur terminal tactile (mobile / tablette):
+
+* Sur un écran tactile (smartphone ou tablette) :
+
+      Le tooltip ne s’affiche pas lors d’un appui sur la compétence.
+
+      Aucun effet de survol (hover) n’est déclenché, car le tactile ne gère pas l’événement mouseenter / mousemove utilisé par la souris.
+
+      L’utilisateur doit toucher ou cliquer longuement pour simuler le survol, mais cela n’active pas la tooltip dans la plupart des navigateurs mobiles (notamment Safari, Chrome Mobile, Firefox Mobile).
+
+
+##  Partie JavaScript – Auto-évaluation des connaissances
+
+
+### Objectif
+
+
+Afficher une liste de compétences (langages, frameworks, outils, etc.) avec un nombre d’étoiles (1 à 5) selon le niveau.
+Les données seront stockées dans un fichier competences.json, puis chargées dynamiquement avec JavaScript pour générer les étoiles dans le CV.
+
+### Étape 1 — Créer le fichier competences.json
+
+Dans le projet, créee un fichier :
+ data/competences.json
+
+Contenu exemple :
+```json
+{
+  "langages": [
+    { "nom": "HTML5", "niveau": 5 },
+    { "nom": "CSS3", "niveau": 5 },
+    { "nom": "JavaScript", "niveau": 1 }, 
+    { "nom": "PHP", "niveau": 3 },
+    { "nom": "Python", "niveau": 4 }
+  ],
+  "frameworks": [
+    { "nom": "React", "niveau": 4 },
+    { "nom": "Bootstrap", "niveau": 5 },
+    { "nom": "Django", "niveau": 3 }
+  ],
+  "outils": [
+    { "nom": "Git", "niveau": 5 },
+    { "nom": "VS Code", "niveau": 4 },
+    { "nom": "Linux", "niveau": 4 }
+  ]
+}
+```
+
+
+ Ce fichier décrit les compétences et leur niveau (1 à 5).
+On peut bien sûr personnaliser les valeurs.
+
+### Étape 2 — Ajouter une section HTML pour afficher l’évaluation
+
+Dans le fichier ubo-resume.html, sous la section compétences existante, ajoute :
+```html
+<section id="auto-evaluation">
+  <h2>Auto-évaluation des connaissances</h2>
+  <div id="liste-competences"></div>
+</section>
+```
+
+
+Cette zone sera remplie automatiquement par ton script JavaScript après chargement du JSON.
+
+### Étape 3 — Créer le script JavaScript auto-eval.js
+
+
+
+Contenu détaillé :
+```js
+
+// Fonction principale
+async function chargerCompetences() {
+  try {
+    // 1. Charger le fichier JSON
+    const reponse = await fetch('data/competences.json');
+    const data = await reponse.json();
+
+    // 2. Sélectionner la zone d'affichage
+    const container = document.getElementById('liste-competences');
+
+    // 3. Parcourir les catégories (langages, frameworks, outils)
+    for (const categorie in data) {
+      const section = document.createElement('div');
+      section.className = 'categorie';
+      section.innerHTML = `<h3>${categorie.charAt(0).toUpperCase() + categorie.slice(1)}</h3>`;
+
+      // 4. Créer les lignes pour chaque compétence
+      data[categorie].forEach(comp => {
+        const ligne = document.createElement('div');
+        ligne.className = 'ligne-competence';
+
+        // Nom de la compétence
+        const nom = document.createElement('span');
+        nom.textContent = comp.nom;
+
+        // Zone étoiles
+        const etoiles = document.createElement('span');
+        etoiles.className = 'etoiles';
+        etoiles.innerHTML = genererEtoiles(comp.niveau);
+
+        ligne.appendChild(nom);
+        ligne.appendChild(etoiles);
+        section.appendChild(ligne);
+      });
+
+      container.appendChild(section);
+    }
+
+  } catch (err) {
+    console.error("Erreur lors du chargement des compétences :", err);
+  }
+}
+
+// Fonction utilitaire : génère le HTML des étoiles
+function genererEtoiles(nb) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    html += i <= nb ? '⭐' : '☆'; // étoile pleine ou vide
+  }
+  return html;
+}
+
+// Lancer la fonction au chargement
+document.addEventListener('DOMContentLoaded', chargerCompetences);
+```
+
+### Étape 4 — Ajouter un peu de style (dans css/resume.css)
+
+```css
+/* --- Auto-évaluation --- */
+#auto-evaluation {
+  margin-top: 40px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+#auto-evaluation .categorie {
+  margin-bottom: 16px;
+}
+
+#auto-evaluation .ligne-competence {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+#auto-evaluation .etoiles {
+  color: gold;
+  font-size: 1.1rem;
+}
+```
+
+### Étape 5 — Lier le script dans le HTML
+
+Ajoute cette ligne avant la fermeture du </body> dans ubo-resume.html :
+
+<script src="js/auto-eval.js"></script>
+
+### Étape 6 — Test et vérification
+
+OVoir une liste comme:
+
+ 
+```html
+Langages
+HTML5       ⭐⭐⭐⭐⭐
+CSS3        ⭐⭐⭐⭐⭐
+JavaScript  ⭐⭐⭐⭐☆
+PHP         ⭐⭐⭐☆☆
+Python      ⭐⭐⭐⭐☆
+```
+
+###  Étape 7 — Add canvas pour histogramme
+Afficher les niveaux de maîtrise des compétences sous forme **d’histogramme** à partir des données du fichier `competences.json`.  
+Chaque barre représente une compétence, sa hauteur correspond à la note (de 1 à 5).
+
+---
+
+###  Fichier concerné
+- **JSON** : `data/competences.json`  
+- **JavaScript** : `js/auto-eval.js`  
+- **HTML** : section `<canvas id="graphiqueCompetences">`
+
+---
+
+### Explication
+1. Le script charge les compétences depuis `competences.json` avec `fetch()`.  
+2. Les valeurs (niveau de 1 à 5) sont lues et transformées en **barres verticales** dans un `<canvas>`.  
+3. Chaque barre affiche :
+   - le **nom de la compétence**,
+   - la **valeur numérique du niveau**.
+
+---
+
+
+###  Étape 8 — Commit et Tag Git
+```git
+git add data/competences.json js/auto-eval.js ubo-resume.html css/resume.css
+git commit -m "Ajout de l'auto-évaluation des compétences (affichage étoiles et histogramme depuis JSON)"
+git tag autoevaluation
+git push --tags
+```
+
+
+
+##  Conclusion du TP — Création d’un CV en HTML, CSS et JavaScript
+
+Ce TP a permis de mettre en pratique l’ensemble des compétences de développement web front-end, depuis la structure HTML jusqu’à l’interactivité JavaScript et la mise en ligne.
+
+###  Partie 1 — Structure HTML
+- Création d’un CV complet, sémantiquement organisé avec les balises `<header>`, `<section>`, `<article>` et `<footer>`.  
+- Utilisation des **microdonnées Schema.org** (`Person`, `PostalAddress`, `EducationalOrganization`) pour améliorer la lisibilité par les moteurs de recherche.
+
+###  Partie 2 — Mise en forme CSS
+- Conception d’un design professionnel et responsive.  
+- Gestion du layout avec **CSS Grid**, **variables CSS**, et **media queries**.  
+- Intégration d’icônes via **Font Awesome** et typographie via **Adobe Edge Fonts**.
+
+###  Partie 3 — Déploiement
+- Déploiement automatique sur **GitLab Pages** via `.gitlab-ci.yml`.  
+- Hébergement alternatif réussi sur **GitHub Pages** pour la mise en ligne publique.
+
+###  Partie 4 — Interactivité JavaScript
+- **Apparition progressive** des expériences professionnelles (boutons *Détails*).  
+- Ajout de **tooltips dynamiques** sur les compétences, permettant d’afficher une description détaillée.  
+- Observation : les tooltips ne s’affichent pas sur les écrans tactiles (absence de survol).
+
+###  Partie 5 — Auto-évaluation des connaissances
+- Lecture des niveaux de compétences depuis un fichier **JSON** (`competences.json`).  
+- Affichage automatique d’une **notation en étoiles ⭐** et d’un **histogramme** Canvas pour une visualisation claire des niveaux techniques.  
+- Implémentation d’un code JavaScript modulaire, clair et documenté.
+
+---
+
+###  Compétences mises en œuvre
+- HTML5 / CSS3 (structure, design et responsive design)  
+- JavaScript (DOM, événements, fetch API, Canvas)  
+- JSON (échange et stockage de données)  
+- Git / GitLab / GitHub (versionnement et déploiement)  
+- Accessibilité et bonnes pratiques web
 
 
 ##  Liens importants
@@ -1004,7 +1275,7 @@ bloc.style.height = h + 'px';
 
 ## Auteur & Droits
 
-**Projet :** *Developpement d'un CV Statique avec HTML et CSS*  
+**Projet :** *Developpement d'un CV Dynamique avec HTML,CSS et JS*  
 **Auteur :** Mohammed BENAISSA  
 **Encadrant :** M.Yannick LEMARECHAL - DOSI
 
@@ -1014,7 +1285,7 @@ bloc.style.height = h + 'px';
 ### Licence et copyright
 
 © 2025 Mohammed Benaissa – Tous droits réservés.  
-Ce projet est réalisé dans un but **pédagogique** dans le cadre du TP *"Developpement d'un CV Statique avec HTML et CSS"*.
+Ce projet est réalisé dans un but **pédagogique** dans le cadre du TP *"DDeveloppement d'un CV Dynamique avec HTML,CSS et JS"*.
 
 Toute réutilisation à des fins éducatives est autorisée avec mention de l’auteur.  
 Pour toute utilisation commerciale, veuillez contacter l’auteur.

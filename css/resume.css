@@ -148,3 +148,29 @@ footer i{ margin-right:6px; }
   transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 1000;
 }
+
+/* --- Auto-évaluation --- */
+#auto-evaluation {
+  margin-top: 40px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+#auto-evaluation .ligne-competence {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0;
+}
+
+#auto-evaluation .etoiles {
+  color: gold;
+  font-size: 1.2rem;
+}
+
+#graphiqueCompetences {
+  display: block;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  background: #fff;
+}
