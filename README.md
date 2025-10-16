@@ -764,6 +764,7 @@ Rend accessible la page publique sur le lien ci-dessus.
   ```
 
 
+<<<<<<< HEAD
 
   ---
 
@@ -809,3 +810,126 @@ Toute réutilisation pédagogique est libre tant que la paternité du travail es
 > GitLab : [@e22507739](https://gitlab-depinfo.univ-brest.fr/e22507739)
 
 ---
+=======
+## Partie 5 – Micro-données (Schema.org)
+
+###  Objectif
+L’objectif de cette partie est d’enrichir la page du CV avec des **micro-données (microdata)** afin de permettre aux moteurs de recherche et aux outils sémantiques (comme Google ou Bing) d’interpréter automatiquement les informations contenues dans le CV : nom, poste, adresse, email, compétences, etc.
+
+Pour cela, le standard **Schema.org** propose des vocabulaires et des propriétés adaptées à chaque type de contenu.  
+Dans notre cas, nous avons utilisé le type [`Person`](https://schema.org/Person), qui correspond parfaitement à la structure d’un CV.
+
+---
+
+###  Implémentation dans le code
+
+Les micro-données ont été intégrées directement dans le fichier `ubo-resume.html` en ajoutant les attributs :
+
+- `itemscope` et `itemtype` pour déclarer le type d’objet :  
+  ```html
+  <div id="wrapper" itemscope itemtype="https://schema.org/Person">
+    ```
+* itemprop pour chaque propriété sémantique :
+
+```html
+<h1 itemprop="name">Ahmed AL KHALIDI</h1>
+<h2 itemprop="jobTitle">Développeur Web Senior</h2>
+<a href="mailto:ahmed.khalidi@example.com" itemprop="email">ahmed.khalidi@example.com</a>
+```
+Des sous-types ont également été utilisés :
+
+* PostalAddress pour l’adresse (streetAddress, addressLocality, addressCountry),
+
+* EducationalOrganization pour les formations,
+
+* Organization pour les expériences professionnelles,
+
+* knowsLanguage et knowsAbout pour les langues et compétences.
+
+Toutes ces métadonnées permettent de décrire précisément le profil de la personne.
+
+Validation des micro-données
+L’outil utilisé est le validateur officiel de Schema.org :
+ https://validator.schema.org/
+
+### L’URL testée est :
+
+* https://medbenaissa1.github.io/tp_cv/ubo-resume.html
+
+Le validateur détecte correctement toutes les propriétés du type Person :
+
+* name, jobTitle, email, address, birthDate, nationality, ainsi que les sous-propriétés comme knowsLanguage, knowsAbout, etc.
+
+
+ Remarque sur la détection automatique
+Je pourrais rendre mon fichier CV principal en le renommant simplement :
+
+```bash
+mv ubo-resume.html index.html
+```
+Cela permettrait au validateur Schema.org de détecter automatiquement les micro-données à l’adresse racine :
+
+```bash
+https://medbenaissa1.github.io/tp_cv/
+```
+* Cependant, pour des raisons d’évaluation et de suivi du travail par l’enseignant, le fichier ubo-resume.html a été conservé sous ce nom.
+La validation est donc effectuée directement sur :https://medbenaissa1.github.io/tp_cv/ubo-resume.html
+et fonctionne parfaitement.
+
+### Conclusion
+* Les micro-données enrichissent la page avec des informations sémantiques exploitables par les moteurs de recherche.
+
+* Le type Person est correctement reconnu par le validateur.
+
+* Le choix de garder le fichier ubo-resume.html garantit la conformité avec les consignes du TP.
+
+* Si besoin, le renommage en index.html reste une option simple pour automatiser la détection future.
+
+
+
+
+##  Liens importants
+
+*  GitHub (dépôt principal)	https://github.com/medbenaissa1/tp_cv
+	Contient tout le projet CV, code source et fichiers CSS.
+* CV en ligne (GitHub Pages)	https://medbenaissa1.github.io/tp_cv/ubo-resume.html
+	Version en ligne du CV avec micro-données.
+*  Validateur Schema.org	https://validator.schema.org/
+	Validation des micro-données du fichier ubo-resume.html.
+* GitLab (Université de Brest)	https://gitlab-depinfo-2025.univ-brest.fr/e22507739/tp_cv
+	Miroir du dépôt GitHub pour le suivi de l’évaluation.
+
+
+
+## Auteur & Droits
+
+**Projet :** *Developpement d'un CV Statique avec HTML et CSS*  
+**Auteur :** Mohammed BENAISSA  
+**Encadrant :** M.Yannick LEMARECHAL - DOSI
+
+
+---
+
+### Licence et copyright
+
+© 2025 Mohammed Benaissa – Tous droits réservés.  
+Ce projet est réalisé dans un but **pédagogique** dans le cadre du TP *"Developpement d'un CV Statique avec HTML et CSS"*.
+
+Toute réutilisation à des fins éducatives est autorisée avec mention de l’auteur.  
+Pour toute utilisation commerciale, veuillez contacter l’auteur.
+
+---
+
+###  Signature
+
+```
+Mohammed Benaissa  
+Étudiant en Master Informatique – UBO  
+mbenaissa@localhost
+```
+
+---
+
+> *“Data Oil”*
+> — M. Benaissa, 2025
+>>>>>>> 971c1b988887644c93dbc7dffc2d4ce2e4360d0b
