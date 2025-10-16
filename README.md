@@ -807,9 +807,7 @@ Toute réutilisation pédagogique est libre tant que la paternité du travail es
 > GitLab : [@e22507739](https://gitlab-depinfo.univ-brest.fr/e22507739)
 
 ---
-=======
-=======
->>>>>>> 971c1b988887644c93dbc7dffc2d4ce2e4360d0b
+
 ## Partie 5 – Micro-données (Schema.org)
 
 ###  Objectif
@@ -884,6 +882,110 @@ et fonctionne parfaitement.
 
 * Si besoin, le renommage en index.html reste une option simple pour automatiser la détection future.
 
+
+
+
+## Partie JavaScript — Apparition progressive des expériences professionnelles
+
+
+### Apparition des description détaillées
+--- 
+
+
+### Objectif
+
+Cette partie du TP vise à **ajouter de l’interactivité** dans la section **“Expériences professionnelles”** du CV.  
+L’objectif est de permettre à l’utilisateur d’afficher ou de masquer les détails d’une expérience,  
+avec un **effet d’ouverture progressive** et un code **simple, clair et modulaire**.
+
+---
+
+###  Structure HTML utilisée
+
+```html
+<section id="experiences">
+  <h2>Expériences professionnelles</h2>
+
+  <article class="xp">
+    <h3>Lead Developer – WebTech Solutions (2018–2024)</h3>
+    <button class="toggle" aria-expanded="false">Détails</button>
+    <div class="details" hidden>
+      <p>Encadrement d’une équipe de développeurs, conception d’architectures modernes et intégration continue.</p>
+    </div>
+  </article>
+
+  <article class="xp">
+    <h3>Développeur Front-End – DigitalWave (2014–2018)</h3>
+    <button class="toggle" aria-expanded="false">Détails</button>
+    <div class="details" hidden>
+      <p>Développement d’interfaces responsives et intégration de maquettes UX. Collaboration avec les équipes design et marketing.</p>
+    </div>
+  </article>
+
+  <article class="xp">
+    <h3>Consultant Web Freelance (2008–2014)</h3>
+    <button class="toggle" aria-expanded="false">Détails</button>
+    <div class="details" hidden>
+      <p>Création de sites vitrines et blogs personnalisés pour PME et indépendants. Accompagnement technique et maintenance continue.</p>
+    </div>
+  </article>
+</section>
+
+```
+
+
+Chaque expérience contient :
+```html
+un titre (<h3>)
+
+un bouton .toggle
+
+une zone cachée .details
+```
+
+Feuille de style CSS
+
+
+```html
+/* --- Animation des détails --- */
+.details {
+  overflow: hidden;
+  height: 0;
+  display: none;
+}
+```
+
+
+ Explication :
+
+* .details	Bloc caché contenant les détails	La hauteur est initialisée à 0 et masquée (display:none)
+.
+ ### Script JavaScript — app.js
+
+
+Tous les boutons .toggle sont détectés.
+
+Les blocs .details ayant l’attribut hidden sont réactivés (sinon scrollHeight = 0).
+
+### Animation progressive
+
+L’effet de transition est réalisé avec setInterval, qui augmente ou diminue la hauteur du bloc petit à petit :
+
+```html
+h += pas;
+bloc.style.height = h + 'px';
+```
+
+
+* Le script s’exécute toutes les 16 ms, soit environ 60 fois par seconde, ce qui crée une animation fluide.
+
+* Accessibilité et lisibilité
+
+* Le bouton change son texte : “Détails” ↔ “Fermer”
+
+* L’attribut aria-expanded est mis à jour, utile pour les lecteurs d’écran.
+
+* Une seule section peut être ouverte à la fois (fermerTous()).
 
 
 

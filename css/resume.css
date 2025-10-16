@@ -112,27 +112,11 @@ footer i{ margin-right:6px; }
 
 
 
-/* --- Animation des détails --- */
-.details {
+
+/* Les détails sont repliés par défaut, mais pas "display:none" permanent */
+.details{
   overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease;
-}
-
-.details.open {
-  max-height: 500px; /* assez pour que le contenu apparaisse */
-}
-
-.toggle {
-  margin-top: 6px;
-  background: #e9f4f7;
-  border: 1px solid #bfe4ee;
-  border-radius: 6px;
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-.toggle:hover {
-  background: #d7eef5;
+  height: 0;           /* point de départ pour l’anim */
+  display: none;       /* caché visuellement jusqu’à ouverture */
 }
 
